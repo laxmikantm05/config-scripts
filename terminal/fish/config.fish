@@ -8,16 +8,6 @@ if test -d ~/.local/bin
     end
 end
 
-# Typewriter effect function (used across entire config)
-function tw --description "Prints text with a typewriter animation effect"
-    set -l delay 0.01
-    for c in (string split '' $argv)
-        echo -n $c
-        sleep $delay
-    end
-    echo
-end
-
 # Lambda-style prompt
 function fish_prompt
     set -l last_status $status
@@ -33,7 +23,6 @@ function fish_prompt
         end
     end
 
-    # Define colors
     set -l normal (set_color normal)
     set -l white (set_color FFFFFF)
     set -l red (set_color F00)
@@ -51,12 +40,10 @@ function fish_prompt
     set -g __fish_git_prompt_showstashstate true
     set -g __fish_git_prompt_show_informative_status true
 
-    # Print animated header
-    tw "$white╭─$red$USER$white at $orange$__fish_prompt_hostname$white in $limegreen"(pwd | sed "s=$HOME=⌁=")"$turquoise"
+    echo "$white╭─$red$USER$white at $orange$__fish_prompt_hostname$white in $limegreen"(pwd | sed "s=$HOME=⌁=")"$turquoise"
     __fish_git_prompt " (%s)"
     echo
 
-    # Prompt line (non-animated for responsiveness)
     echo -n "$white╰─$__fish_prompt_char $normal"
 end
 
@@ -138,120 +125,27 @@ end
 # Starship support
 starship init fish | source
 
-# Greet the user with system info
-function greet_user
-    set hour (date +%H)
-    if test $hour -lt 12
-        set greeting "Good Morning"
-    else if test $hour -lt 18
-        set greeting "Good Afternoon"
-    else
-        set greeting "Good Evening"
-    end
+# Launch fastfetch on shell open (all info handled by fastfetch config)
+fastfetch --logo blackarch
 
-    set day (date '+%A')
-    switch $day
-        case Monday
-            set day_greeting "Start the week with strength!"
-        case Friday
-            set day_greeting "Friday vibes — the weekend is near!"
-        case Saturday Sunday
-            set day_greeting "It's a weekend — time to relax!"
-        case '*'
-            set day_greeting "Power up your productivity!"
-    end
-
-    set user (whoami)
-    set host_name (hostname)
-    set current_time (date '+%H:%M:%S')
-    set current_date (date '+%A, %d %B %Y')
-    set weather_data (curl -s "wttr.in?format=%C+%t")
-    set weather_condition (echo $weather_data | awk '{print $1}')
-    set weather_temp (echo $weather_data | awk '{print $2}')
-    set uptime (uptime -p)
-    set last_login (last -n 1 $user | awk '{print $4, $5, $6, $7}')
-    set last_logout (last -x -n 1 $user | grep shutdown | awk '{print $6, $7, $8, $9}')
-
-    switch $weather_condition
-        case Clear
-            set weather_icon "☀️"
-        case Cloudy Overcast
-            set weather_icon "☁️"
-        case Rain
-            set weather_icon "🌧️"
-        case Snow
-            set weather_icon "❄️"
-        case '*'
-            set weather_icon "🌈"
-    end
-
-    fastfetch --logo blackarch
-
-    set_color red
-    echo "╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮"
-    tw "┃                                   [ SYSTEM STATUS ONLINE ]                                │"
-    echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫"
-    set_color normal
-
-    tw "              ★☆★ $greeting, $user! $day_greeting ★☆★"
-    echo " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-
-    tw "  🖥️       Hostname:        $host_name"
-    tw "  🕒   Current Time:        $current_time"
-    tw "  📅   Current Date:        $current_date"
-    tw "  $weather_icon        Weather:        $weather_condition $weather_temp"
-
-    tw ""
-    echo " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    tw "  ⏱️ System Uptime:        $uptime"
-    tw "  💡 Last Login   :    $last_login"
-    tw "  💡 Last Logout  :      $last_logout"
-    echo " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-
-    tw "                     Welcome Back to the system, Captain. Operate with precision."
-    set_color red
-    echo "╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯"
-    set_color normal
-end
-
-
-# Call greeting on shell open
-greet_user
-
-# Random salutation list
-set -g salutations "Sir" "Boss" "Chief" "Captain" "Master"
-
-function random_salutation
-    set -l count (count $salutations)
-    set -l index (random 1 $count)
-    echo $salutations[$index]
-end
-
-# Post-execution animation
+# Post-execution hook — only on failure
 function postexec --on-event fish_postexec
     if set -q __last_command_not_found
         set -e __last_command_not_found
         return
     end
 
-    set -l salutation (random_salutation)
-    if test $status -eq 0
-        set_color green
-        tw "✅ Task completed successfully, $salutation! All systems are go."
-    else
+    if test $status -ne 0
         set_color red
-        tw "❌ Task failed, $salutation. Exit status: $status."
+        echo "❌ Task failed. Exit status: $status."
+        set_color normal
     end
-    set_color normal
 end
 
 # Command not found
 function fish_command_not_found
-    set -l salutation (random_salutation)
     set_color red
-    tw "❓ Apologies, $salutation. Command '$argv' not found. Are you sure it's installed?"
+    echo "❓ Command '$argv' not found. Are you sure it's installed?"
     set_color normal
     set -g __last_command_not_found 1
 end
