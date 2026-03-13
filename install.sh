@@ -46,11 +46,13 @@ log "Setting things up for you, sit back and relax..."
 case "$PKG_MANAGER" in
     apt)
         log "Preparing your desktop..."
-        bash ~/fancy-desktop/script/debian/debian-rice.sh
+        cd ~/fancy-desktop/script/debian/
+	./debian-rice.sh
         ;;
     dnf)
         log "Preparing your desktop..."
-        bash ~/fancy-desktop/script/fedora/fedora-rice.sh
+        cd ~/fancy-desktop/script/fedora/
+	./fedora-rice.sh
         ;;
     *)
         error "Oops! Your system is not supported yet."
