@@ -115,7 +115,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias hw='hwinfo --short'
 alias big="expac -H M '%m\t%n' | sort -h | nl"
-alias fastfetch="fastfetch --logo arch"
+
 
 # Apply pywal colors if available
 if type "wal" > /dev/null 2>&1
@@ -126,7 +126,8 @@ end
 starship init fish | source
 
 # Launch fastfetch on shell open (all info handled by fastfetch config)
-fastfetch --logo blackarch
+# fastfetch --logo blackarch
+fastfetch
 
 # Post-execution hook — only on failure
 function postexec --on-event fish_postexec
