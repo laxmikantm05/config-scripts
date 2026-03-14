@@ -20,7 +20,7 @@ Make sure the following are available on your system before running:
 ## 🚀 Installation
 
 ```bash
-git clone https://github.com/laxmikantm05/fancy-desktop.git ~
+git clone https://github.com/laxmikantm05/fancy-desktop.git
 cd ~/fancy-desktop
 bash install.sh
 ```
