@@ -46,12 +46,12 @@ log "Setting things up for you, sit back and relax..."
 case "$PKG_MANAGER" in
     apt)
         log "Preparing your desktop..."
-        bash ~/fancy-desktop/scripts/debian-rice.sh
+        bash ~/fancy-desktop/scripts/debian/debian-rice.sh
 #               bash debian-rice.sh
         ;;
     dnf)
         log "Preparing your desktop..."
-        bash ~/fancy-desktop/scripts/fedora-rice.sh
+        bash ~/fancy-desktop/scripts/fedora/fedora-rice.sh
 #               bash fedora-rice.sh
         ;;
     *)
