@@ -303,6 +303,13 @@ module_bootloader() {
 # ─────────────────────────────────────────────
 module_reboot() {
     section "All Done!"
+
+    # same lavender fancy desktop banner
+    figlet -f standard "Fancy Desktop" | while IFS= read -r line; do
+        echo -e "\033[38;5;183m${line}${RESET}"
+    done
+    echo ""
+
     gum style \
         --foreground="#00eeff" \
         --border=double \
@@ -322,7 +329,6 @@ module_reboot() {
         gum style --foreground="#888888" "  okay! log out and back in when ready."
     fi
 }
-
 # =============================================================================
 #  MAIN
 # =============================================================================
