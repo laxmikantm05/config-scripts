@@ -1,0 +1,131 @@
+# ╔══════════════════════════════════════════════════════════════╗
+# ║         Ghostty config — GNOME Wayland · Fancy Desktop                              ║
+# ║         laxmikant@LA17                                                              ║
+# ║         ~/.config/ghostty/config                                                    ║
+# ╚══════════════════════════════════════════════════════════════╝
+# ─── Font ────────────────────────────────────────────────────────
+font-family = JetBrainsMono Nerd Font
+font-size = 12
+font-feature = +calt
+font-feature = +liga
+font-feature = +zero
+
+# ─── Cursor ──────────────────────────────────────────────────────
+cursor-color = #ffffff
+cursor-text = #1a1b26
+cursor-style = block
+cursor-style-blink = true
+
+# ─── Colors ──────────────────────────────────────────────────────
+# Tokyo Night dark background, clean elementary-style foreground
+background = #1a1b26
+foreground = #f8f8f2
+
+selection-background = #3d59a1
+selection-foreground = #ffffff
+
+# Black
+palette = 0=#1c1c2a
+palette = 8=#4c4c6a
+
+# Red — elementary crimson
+palette = 1=#cc0000
+palette = 9=#ef2929
+
+# Green — elementary grass
+palette = 2=#4e9a06
+palette = 10=#8ae234
+
+# Yellow — elementary butter
+palette = 3=#c4a000
+palette = 11=#fce94f
+
+# Blue — elementary sky
+palette = 4=#3465a4
+palette = 12=#729fcf
+
+# Magenta — elementary plum
+palette = 5=#75507b
+palette = 13=#ad7fa8
+
+# Cyan — elementary teal
+palette = 6=#06989a
+palette = 14=#34e2e2
+
+# White — clean bright
+palette = 7=#d3d7cf
+palette = 15=#eeeeec
+
+# ─── Transparency ────────────────────────────────────────────────
+background-opacity = 0.85
+background-blur-radius = 20
+
+# ─── Window — GNOME-ish ──────────────────────────────────────────
+gtk-titlebar = true
+window-theme = ghostty
+window-padding-x = 16
+window-padding-y = 12
+window-save-state = always
+
+# ─── Tab bar ─────────────────────────────────────────────────────
+gtk-tabs-location = top
+
+# ─── Shell ───────────────────────────────────────────────────────
+command = /usr/bin/fish
+shell-integration = fish
+shell-integration-features = cursor,sudo,title
+
+# ─── Scrollback ──────────────────────────────────────────────────
+scrollback-limit = 10000
+
+# ─── Mouse ───────────────────────────────────────────────────────
+mouse-hide-while-typing = true
+copy-on-select = clipboard
+
+# ─── URLs ────────────────────────────────────────────────────────
+link-url = true
+
+# ─── Performance ─────────────────────────────────────────────────
+resize-overlay = never
+
+# ─── Cursor trail shader ─────────────────────────────────────────
+# Clone shaders first:
+#   git clone https://github.com/sahaj-b/ghostty-cursor-shaders ~/.config/ghostty/shaders
+# Then pick a shader below (trail / ripple / pulse) and uncomment:
+custom-shader = shaders/ghostty-cursor-shaders/trail.glsl
+custom-shader-animation = always
+
+# ─── Keybindings ─────────────────────────────────────────────────
+# Tabs
+keybind = ctrl+shift+t=new_tab
+keybind = ctrl+shift+w=close_surface
+keybind = ctrl+shift+l=next_tab
+keybind = ctrl+shift+h=previous_tab
+keybind = ctrl+shift+1=goto_tab:1
+keybind = ctrl+shift+2=goto_tab:2
+keybind = ctrl+shift+3=goto_tab:3
+keybind = ctrl+shift+4=goto_tab:4
+keybind = ctrl+shift+5=goto_tab:5
+
+# Splits
+keybind = ctrl+shift+enter=new_split:right
+keybind = ctrl+shift+minus=new_split:down
+keybind = ctrl+shift+]=goto_split:next
+keybind = ctrl+shift+[=goto_split:previous
+
+# Scrolling
+keybind = ctrl+shift+k=scroll_page_up
+keybind = ctrl+shift+j=scroll_page_down
+keybind = ctrl+shift+home=scroll_to_top
+keybind = ctrl+shift+end=scroll_to_bottom
+
+# Font size
+keybind = ctrl+shift+equal=increase_font_size:1
+keybind = ctrl+shift+0=reset_font_size
+
+# Clipboard
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+
+# Reload config
+keybind = ctrl+shift+f5=reload_config
