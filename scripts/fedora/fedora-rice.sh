@@ -156,6 +156,8 @@ module_system_update() {
     section "System Update"
     if confirm "Upgrade system and install all dependencies?"; then
         run_with_output "dnf update" sudo dnf update -y
+        run_with_output "adding ghostty repo" sudo dnf copr enable scottames/ghostty
+        run_with_output sudo dnf install ghostty
         run_with_output "installing dependencies" sudo dnf install -y \
             fish fastfetch curl \
             gnome-menus \
