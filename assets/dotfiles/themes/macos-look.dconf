@@ -1,0 +1,223 @@
+# =============================================================
+#  Fancy Desktop — macOS Look
+#  Load with: grep -v '^#' macos-look.dconf | dconf load /
+# =============================================================
+
+
+# -------------------------------------------------------------
+#  SYSTEM — Fonts, Theme, Colors
+# -------------------------------------------------------------
+
+[org/gnome/desktop/interface]
+gtk-theme='WhiteSur-Dark'
+icon-theme='WhiteSur-dark'
+cursor-theme='Bibata-Modern-Ice'
+cursor-size=24
+color-scheme='prefer-dark'
+font-name='SF Pro Display 11'
+document-font-name='SF Pro Display 11'
+monospace-font-name='JetBrainsMono Nerd Font 11'
+font-antialiasing='rgba'
+font-hinting='slight'
+enable-animations=true
+gtk-enable-primary-paste=false
+
+[org/gnome/desktop/wm/preferences]
+theme='WhiteSur-Dark'
+# Window controls on the LEFT — the #1 macOS tell
+button-layout='close,minimize,maximize:'
+num-workspaces=4
+titlebar-font='SF Pro Display Bold 11'
+
+[org/gnome/desktop/wm/keybindings]
+toggle-fullscreen=['<Super>F']
+
+[org/gnome/mutter]
+center-new-windows=true
+edge-tiling=true
+
+[org/gnome/shell]
+favorite-apps=['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.mozilla.firefox.desktop', 'org.gnome.Settings.desktop']
+
+
+# -------------------------------------------------------------
+#  JUST PERFECTION — Clean macOS-style top bar
+# -------------------------------------------------------------
+
+[org/gnome/shell/extensions/just-perfection]
+activities-button=false
+app-menu=false
+app-menu-icon=false
+workspace=false
+workspace-popup=false
+search=false
+panel-size=32
+panel-button-padding-size=10
+panel-indicator-padding-size=6
+clock-menu-position=0
+clock-menu-position-offset=0
+notification-banner-position=2
+osd=true
+osd-position=3
+window-demands-attention-focus=true
+startup-status=0
+
+
+# -------------------------------------------------------------
+#  KIWI IS NOT APPLE — macOS window controls + UX tweaks
+# -------------------------------------------------------------
+
+[org/gnome/shell/extensions/kiwi]
+# macOS traffic light window controls
+window-control-style=true
+window-control-size=1
+
+# Firefox gets the same macOS window controls
+firefox-window-control=true
+
+# Show current window title in top panel (macOS menu bar behavior)
+show-window-title=true
+
+# Panel transparent when no window touches it (macOS menu bar)
+panel-transparency=true
+
+# Windows go slightly transparent while dragging
+transparent-move=true
+
+# Hide Activities button
+hide-activities=true
+
+# Skip overview on login, go straight to desktop
+skip-overview=true
+
+# Hide minimized windows from overview
+hide-minimized=true
+
+# Focus newly launched windows immediately
+focus-launched-window=true
+
+# Fullscreen apps go to their own workspace
+move-to-new-workspace=true
+
+# Show panel on hover when in fullscreen
+show-panel-on-hover=true
+
+# Move calendar to right side
+move-calendar=true
+
+# Blur overview background with wallpaper
+overview-blur=true
+
+# Username in quick settings
+show-username=true
+
+# Battery % shown when below 20%
+battery-percentage=true
+
+# Show window controls in panel for maximized windows (saves titlebar space)
+window-controls-in-panel=true
+
+# Hide keyboard indicator for a cleaner bar
+hide-keyboard-indicator=true
+
+
+# -------------------------------------------------------------
+#  BLUR MY SHELL — Frosted glass blur
+# -------------------------------------------------------------
+
+[org/gnome/shell/extensions/blur-my-shell]
+blur=true
+color-and-noise=false
+hacks-level=2
+
+[org/gnome/shell/extensions/blur-my-shell/panel]
+blur=true
+brightness=0.75
+sigma=30
+override-background=true
+style-panel=1
+unblur-in-overview=false
+
+[org/gnome/shell/extensions/blur-my-shell/overview]
+blur=true
+brightness=0.65
+sigma=30
+
+[org/gnome/shell/extensions/blur-my-shell/dash-to-dock]
+blur=true
+brightness=0.65
+sigma=20
+
+[org/gnome/shell/extensions/blur-my-shell/applications]
+blur=false
+brightness=1.0
+sigma=30
+opacity=255
+
+
+# -------------------------------------------------------------
+#  DASH 2 DOCK LITE — macOS dock at the bottom
+# -------------------------------------------------------------
+
+[org/gnome/shell/extensions/dash2dock-lite]
+dock-location=0
+icon-size=48
+icon-effect=true
+icon-effect-value=0.35
+autohide=true
+autohide-dodge=false
+peek-hidden-icons=true
+animate-icons-unmute=true
+animate-icons=true
+shrink-icons=true
+running-indicator-style=2
+panel-mode=false
+preferred-monitor=-2
+background-color='(0.0, 0.0, 0.0, 0.4)'
+clock-always=false
+
+
+# -------------------------------------------------------------
+#  ARCMENU — Spotlight-style launcher
+# -------------------------------------------------------------
+
+[org/gnome/shell/extensions/arcmenu]
+menu-layout='Runner'
+arc-menu-icon=1
+distro-icon=1
+custom-menu-button-icon-size=64.0
+hotkey-open-arcmenu=true
+menu-hotkey=1
+runner-search-display-style=0
+runner-show-frequent-apps=false
+position-in-panel=0
+menu-button-position=0
+
+
+# -------------------------------------------------------------
+#  BURN MY WINDOWS — Subtle macOS-style animations
+# -------------------------------------------------------------
+
+[org/gnome/shell/extensions/burn-my-windows]
+fire-enable-effect=false
+glitch-enable-effect=false
+tv-enable-effect=false
+doom-enable-effect=false
+matrix-enable-effect=false
+pixel-wipe-enable-effect=false
+apparition-enable-effect=false
+broken-glass-enable-effect=false
+fade-enable-effect=true
+scale-enable-effect=true
+scale-animation-time=200
+fade-animation-time=150
+
+
+# -------------------------------------------------------------
+#  COMPIZ WINDOWS EFFECT — Wobbly drag feel
+# -------------------------------------------------------------
+
+[org/gnome/shell/extensions/compiz-windows-effect]
+mass=100
+friction=180
+spring-k=190
