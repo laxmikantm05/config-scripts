@@ -3,7 +3,7 @@
 # Terminal Setup script !!
 #===============================
 
-sudo apt install -y fish fastfetch
+sudo apt install -y fish fastfetch fzf
 sleep 1
 curl -sS https://starship.rs/install.sh | sh
 sleep 1
