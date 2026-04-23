@@ -8,7 +8,7 @@ sudo apt update -y
 sudo apt upgrade -y
 
 
-sudo apt install -y curl wget
+sudo apt install -y curl wget gum pip sl lolcat figlet fish fastfetch
 
 # Terminal Install Script:
 #==========================================
